@@ -169,27 +169,27 @@ describe('Node-regon', function() {
     });
   });
 
-  it('should return result from getInfo and return object with DaneKomunikatResult', function(done) {
+  it('should return result from getInfo and return string', function(done) {
     var client = Client.createClient(options, function(err, soapClient) {
-      assert.property(soapClient.getInfo(), "DaneKomunikatResult");
+      assert.typeOf(soapClient.getInfo(), "null");
 
       done();
     });
   });
 
-  it('should return result from DaneKomunikat(alias to getInfo) and return object with DaneKomunikatResult', function(done) {
+  it('should return result from DaneKomunikat(alias to getInfo) and return null', function(done) {
     var client = Client.createClient(options, function(err, soapClient) {
-      assert.property(soapClient.DaneKomunikat(), "DaneKomunikatResult");
+      assert.typeOf(soapClient.DaneKomunikat(), "null");
 
       done();
     });
   });
-  it('should return result from getValue for StatusSesji param and return object with GetValueResult with value of 1, because we are logged in by default', function(done) {
+  it('should return result from getValue for StatusSesji param and return string with value of 1, because we are logged in by default', function(done) {
     var client = Client.createClient(options, function(err, soapClient) {
       var GetValueResult = soapClient.getValue('StatusSesji');
-      assert.property(GetValueResult, "GetValueResult");
+      assert.typeOf(GetValueResult, "string");
 
-      assert.equal(GetValueResult.GetValueResult, "1");
+      assert.equal(GetValueResult, "1");
 
       done();
     });
@@ -199,36 +199,37 @@ describe('Node-regon', function() {
     var client = Client.createClient(options, function(err, soapClient) {
       soapClient.logout();
       var GetValueResult = soapClient.getValue('StatusSesji');
-      assert.property(GetValueResult, "GetValueResult");
+      assert.typeOf(GetValueResult, "string");
 
-      assert.equal(GetValueResult.GetValueResult, "0");
+      assert.equal(GetValueResult, "0");
 
       done();
     });
   });
 
-  it('should return result from getValue for KomunikatKod and return object with GetValueResult', function(done) {
+  it('should return result from getValue for KomunikatKod and return string', function(done) {
     var client = Client.createClient(options, function(err, soapClient) {
       var GetValueResult = soapClient.getValue('KomunikatKod');
-      assert.property(GetValueResult, "GetValueResult");
+      assert.typeOf(GetValueResult, "string");
+
 
       done();
     });
   });
 
-  it('should return result from getValue for KomunikatTresc and return object with GetValueResult', function(done) {
+  it('should return result from getValue for KomunikatTresc and return string', function(done) {
     var client = Client.createClient(options, function(err, soapClient) {
       var GetValueResult = soapClient.getValue('KomunikatTresc');
-      assert.property(GetValueResult, "GetValueResult");
+      assert.typeOf(GetValueResult, "string");
 
       done();
     });
   });
 
-  it('should return result from GetValue (alias to getValue) and return object with GetValueResult with value of 1, because we are logged in', function(done) {
+  it('should return result from GetValue (alias to getValue) and return string with value of 1, because we are logged in', function(done) {
     var client = Client.createClient(options, function(err, soapClient) {
       var GetValueResult = soapClient.getValue('StatusSesji');
-      assert.property(GetValueResult, "GetValueResult");
+      assert.typeOf(GetValueResult, "string");
 
       done();
     });
@@ -237,11 +238,11 @@ describe('Node-regon', function() {
   it('should return result from getInfo and return object with GetValueResult with value of 1, because we are logged in', function(done) {
     var client = Client.createClient(options, function(err, soapClient) {
       var GetValueResult = soapClient.getInfo();
-      assert.property(GetValueResult, "DaneKomunikatResult");
+      assert.typeOf(GetValueResult, "null");
 
       //alias
       var GetValueResult = soapClient.DaneKomunikat();
-      assert.property(GetValueResult, "DaneKomunikatResult");
+      assert.typeOf(GetValueResult, "null");
 
       done();
     });
