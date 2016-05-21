@@ -1,0 +1,40 @@
+{
+  "name": "node-regon",
+  "version": "0.1.4",
+  "description": "An API for accessing a Polish REGON database",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --timeout 10000 test/*-test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Appsolutly/node-regon.git"
+  },
+  "keywords": [
+    "regon",
+    "nip",
+    "krs",
+    "wyszukiwarkaregon",
+    "wyszukiwarkaregontest",
+    "wsdl",
+    "gus",
+    "stat.gov.pl",
+    "identification number"
+  ],
+  "author": "Adam Kaczmarzyk",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Appsolutly/node-regon/issues"
+  },
+  "homepage": "https://github.com/Appsolutly/node-regon#readme",
+  "dependencies": {
+    "antigate": "0.0.1",
+    "chai": "^3.5.0",
+    "deasync": "^0.1.6",
+    "debug": "^2.2.0",
+    "lodash": "^4.12.0",
+    "mocha": "~1.17.0",
+    "soap-extended": "^0.15.56",
+    "xml2json": "^0.9.1"
+  }
+}
