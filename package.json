@@ -1,6 +1,6 @@
 {
   "name": "node-regon",
-  "version": "0.1.4",
+  "version": "0.1.41",
   "description": "An API for accessing a Polish REGON database",
   "main": "index.js",
   "scripts": {
@@ -12,6 +12,9 @@
   },
   "keywords": [
     "regon",
+    "node-regon",
+    "antigate",
+    "anti-captcha",
     "nip",
     "krs",
     "wyszukiwarkaregon",
@@ -22,7 +25,7 @@
     "identification number"
   ],
   "author": "Adam Kaczmarzyk",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/Appsolutly/node-regon/issues"
   },
