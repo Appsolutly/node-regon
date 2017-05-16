@@ -1,10 +1,13 @@
 {
   "name": "node-regon",
-  "version": "0.1.43",
+  "version": "0.1.44",
   "description": "An API for accessing a Polish REGON database",
   "main": "index.js",
   "scripts": {
     "test": "mocha --timeout 10000 test/*-test.js"
+  },
+  "options": {
+    "mocha": "--require .scripts/mocha_runner client/**/tests/**/*.js"
   },
   "repository": {
     "type": "git",
@@ -30,14 +33,25 @@
     "url": "https://github.com/Appsolutly/node-regon/issues"
   },
   "homepage": "https://github.com/Appsolutly/node-regon#readme",
+  "devDependencies": {
+    "babel-core": "^6.7.4",
+    "babel-eslint": "^6.1.0",
+    "babel-polyfill": "^6.7.4",
+    "babel-preset-es2015": "6.x.x",
+    "babel-preset-stage-2": "6.x.x",
+    "chai": "3.x.x",
+    "enzyme": "1.x.x",
+    "eslint": "1.10.x",
+    "eslint-plugin-react": "3.15.x",
+    "mocha": "2.x.x"
+  },
   "dependencies": {
     "antigate": "0.0.1",
     "chai": "^3.5.0",
     "deasync": "^0.1.6",
     "debug": "^2.2.0",
     "lodash": "^4.12.0",
-    "mocha": "~1.17.0",
     "soap-extended": "^0.15.56",
-    "xml2json": "^0.9.1"
+    "xml2json": "0.11.0"
   }
 }

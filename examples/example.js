@@ -19,7 +19,7 @@ console.log("_________________________________");
 console.log("_________________________________");
 
 gus = Client.createClient({
-    key: "HERE_PUT_YOUR_PRODUCTION_KEY",
+    // key: "HERE_PUT_YOUR_PRODUCTION_KEY",
     disableAsync:true, // if it is true, you will get returned result, and it will waid for end of call
     captcha: {
       autofill: false,
@@ -37,6 +37,8 @@ gus = Client.createClient({
 // if you want to auto resolve captchas.
 
 
+console.log("USED API KEY: ", gus.key);
+console.log("Sandbox: ", gus.sandbox);
 console.log("login GUS sessionID: ", gus.getSessionId());
 
 // If you want to get basic information about NIP, lets:
