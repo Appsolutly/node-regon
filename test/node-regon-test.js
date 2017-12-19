@@ -8,7 +8,8 @@ var assert = chai.assert;
 var AntigateApiKey = process.env.AntigateApiKey || null;
 var GUSApiKey = process.env.GUSApiKey || null;
 var options = {
-  sandbox: true
+  // sandbox: false,
+  disableAsync:true
 };
 
 delete process.env.AntigateApiKey;
@@ -34,16 +35,8 @@ describe('Node-regon', function() {
     assert.typeOf(AntigateApiKey, "string");
   });
 
-
-  it('should set options as callback if options is not defined', function(done) {
-    var client = Client.createClient(function(err, soapClient) {
-      var endpointUrl = soapClient.sandbox ? soapClient.urlSandbox : soapClient.url;
-      done();
-    });
-  });
-
   it('should by default return normal url', function(done) {
-    var client = Client.createClient({},
+    var client = Client.createClient(options,
       function(err, soapClient) {
         var endpointUrl = soapClient.sandbox ? soapClient.urlSandbox : soapClient.url;
         assert.equal(endpointUrl, soapClient.url);
@@ -53,9 +46,9 @@ describe('Node-regon', function() {
 
   it('should allow to set sandbox mode', function(done) {
 
-    var client = Client.createClient({
+    var client = Client.createClient(Object.assign(options,{
         sandbox: true
-      },
+      }),
       function(err, soapClient) {
         var endpointUrl = soapClient.sandbox ? soapClient.urlSandbox : soapClient.url;
         assert.equal(endpointUrl, soapClient.urlSandbox);

@@ -1,6 +1,6 @@
 {
   "name": "node-regon",
-  "version": "0.1.45",
+  "version": "0.1.46",
   "description": "An API for accessing a Polish REGON database",
   "main": "index.js",
   "scripts": {

@@ -48,7 +48,7 @@ console.log(findCompanyByNip);
 
 // If you want to get full report by REGON:
 var companyRegon = findCompanyByNip.response.Regon; // get regon from previous query
-var fullReport = gus.getFullReport(companyRegon);
+var fullReport = gus.getFullReport(companyRegon, findCompanyByNip.response.Typ, findCompanyByNip.response.SilosID);
 
 console.log(companyRegon, fullReport);
 
