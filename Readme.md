@@ -40,7 +40,7 @@ Finally, get basic information about NIP:
 
 `var companyInfoByNip = gus.findByNip("6762264686");`
 
-***Available Additional Options***
+***Additional Options For Creating a Client***
 - sandbox: `false`,  -  default is true
 - autoLogin: `false`, - you can also run gis.login(), manually
 - sid: `YOUR SESS ID`, - if you want to pass your session id
