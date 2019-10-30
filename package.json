@@ -41,7 +41,7 @@
 		"babel-preset-stage-2": "6.x.x",
 		"chai": "3.x.x",
 		"enzyme": "1.x.x",
-		"eslint": "1.10.x",
+		"eslint": "6.6.x",
 		"mocha": "2.x.x"
 	},
 	"dependencies": {
