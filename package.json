@@ -1,8 +1,7 @@
 {
 	"name": "node-regon",
-	"version": "0.1.6",
-	"description": "A library for accessing data about businesses from the National Statistics Office in Poland. It can be used to access data stored in the National Court register using unique identifiers that each company has such as NIP (Tax Identification) and REGON (Statistical) numbers.",
-	"main": "index.js",
+	"version": "1.0.0",
+	"description": "A library for accessing data about businesses from the National Statistics Office in Poland. It can be used to access data stored in the National Court register using unique identifiers that each company has such as NIP (Tax Identification) and REGON (Statistical) numbers.",	"main": "index.js",
 	"scripts": {
 		"test": "mocha --timeout 10000 test/*-test.js"
 	},
@@ -16,8 +15,6 @@
 	"keywords": [
 		"regon",
 		"node-regon",
-		"antigate",
-		"anti-captcha",
 		"nip",
 		"krs",
 		"wyszukiwarkaregon",
@@ -45,9 +42,6 @@
 		"mocha": "2.x.x"
 	},
 	"dependencies": {
-		"antigate": "0.0.1",
-		"chai": "^3.5.0",
-		"deasync": "^0.1.6",
 		"debug": "^2.2.0",
 		"lodash": "^4.12.0",
 		"soap-extended": "^0.25.0",

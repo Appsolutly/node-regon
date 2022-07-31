@@ -2,27 +2,18 @@
 
 var Client = require('..');
 var chai = require('chai');
-var Antigate = require('antigate');
 var _ = require('lodash');
 var assert = chai.assert;
-var AntigateApiKey = process.env.AntigateApiKey || null;
 var GUSApiKey = process.env.GUSApiKey || null;
 var options = {
   // sandbox: false,
   disableAsync:true
 };
 
-delete process.env.AntigateApiKey;
 delete process.env.GUSApiKey;
 
 if (GUSApiKey)
   options.key = GUSApiKey;
-
-if (AntigateApiKey)
-  options.captcha = {
-    autofill: true,
-    apiKey: AntigateApiKey
-  }
 
 describe('Node-regon', function() {
 
@@ -31,29 +22,25 @@ describe('Node-regon', function() {
     assert.lengthOf(GUSApiKey, 20);
   });
 
-  it('should specify AntigateApiKey before testing Captcha', function() {
-    assert.typeOf(AntigateApiKey, "string");
-  });
-
   it('should by default return normal url', function(done) {
     var client = Client.createClient(options,
-      function(err, soapClient) {
-        var endpointUrl = soapClient.sandbox ? soapClient.urlSandbox : soapClient.url;
-        assert.equal(endpointUrl, soapClient.url);
-        done();
-      });
+        function(err, soapClient) {
+          var endpointUrl = soapClient.sandbox ? soapClient.urlSandbox : soapClient.url;
+          assert.equal(endpointUrl, soapClient.url);
+          done();
+        });
   });
 
   it('should allow to set sandbox mode', function(done) {
 
     var client = Client.createClient(Object.assign(options,{
-        sandbox: true
-      }),
-      function(err, soapClient) {
-        var endpointUrl = soapClient.sandbox ? soapClient.urlSandbox : soapClient.url;
-        assert.equal(endpointUrl, soapClient.urlSandbox);
-        done();
-      });
+          sandbox: true
+        }),
+        function(err, soapClient) {
+          var endpointUrl = soapClient.sandbox ? soapClient.urlSandbox : soapClient.url;
+          assert.equal(endpointUrl, soapClient.urlSandbox);
+          done();
+        });
   });
 
   it('should return correct apiKey defined in options', function(done) {
@@ -240,65 +227,6 @@ describe('Node-regon', function() {
       done();
     });
   });
-
-  it('should return captcha', function(done) {
-    var client = Client.createClient(options, function(err, soapClient) {
-      var captcha = soapClient.getCaptcha();
-      assert.property(captcha, "PobierzCaptchaResult");
-      assert.isAtLeast((captcha.PobierzCaptchaResult)
-        .length, 1);
-
-      var captcha = soapClient.PobierzCaptcha();
-      assert.property(captcha, "PobierzCaptchaResult");
-      assert.isAtLeast((captcha.PobierzCaptchaResult)
-        .length, 1);
-      done();
-    });
-  });
-
-  it('should return true, we are passing aaaa, which is standard value for sandbox', function(done) {
-    var client = Client.createClient(options, function(err, soapClient) {
-      var captcha = soapClient.getCaptcha();
-      assert.property(captcha, "PobierzCaptchaResult");
-      assert.isAtLeast((captcha.PobierzCaptchaResult)
-        .length, 1);
-
-      var captchaResult = soapClient.checkCaptcha("aaaaa");
-      assert.isTrue(captchaResult, 1);
-      done();
-    });
-  });
-
-  if (AntigateApiKey) {
-
-    it('should return not return NaN value as balance var, we are testing antigate if You have passed correct Antigate key', function(done) {
-      var ag = new Antigate(AntigateApiKey);
-
-      ag.getBalance(function(error, balance) {
-        assert.isNotNaN(balance);
-        done();
-      });
-
-    });
-
-    // it('should return result from getFullReport and return object with response and DanePobierzPelnyRaportResult, and', function(done) {
-    //  var client = Client.createClient( {captcha: {
-    //  autofill: true,
-    //  apiKey: AntigateApiKey
-    // }}, function(err, soapClient) {
-    //    var fullReport = soapClient.getFullReport('000331501');
-    //    console.log(fullReport);
-    //    assert.property(fullReport, "response");
-    //    assert.property(fullReport.response, "DanePobierzPelnyRaportResult");
-    //    assert.typeOf(fullReport.response['DanePobierzPelnyRaportResult'], "string");
-    //    assert.match(fullReport.response['DanePobierzPelnyRaportResult'], /^<dane>/);
-
-    //    done();
-    //  });
-    // });
-  }
-
-
 
 
 });

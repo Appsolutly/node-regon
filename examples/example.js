@@ -18,39 +18,32 @@ console.log("_________________________________");
 console.log("_________________________________");
 console.log("_________________________________");
 
-gus = Client.createClient({
+client = Client.createClient({
     // key: "HERE_PUT_YOUR_PRODUCTION_KEY",
-    disableAsync:true, // if it is true, you will get returned result, and it will waid for end of call
-    captcha: {
-      autofill: false,
-      apiKey: "ANTIGATE_API"
-    }
 });
 // AVAILABLE ADDITIONAL OPTIONS:
 // sandbox: false,  - but it don't work for some time, by default is true
 // autoLogin: false, - if you want to run gis.login(), by yourself
 // sid:"YOUR SESS ID", - if you want to pass your session id
-// captcha: {
-//   autofill: true,
-//   apiKey: "YOUR_ANTIGATE_API_KEY"
-// }
 // if you want to auto resolve captchas.
 
 
-console.log("USED API KEY: ", gus.key);
-console.log("Sandbox: ", gus.sandbox);
-console.log("login GUS sessionID: ", gus.getSessionId());
 
-// If you want to get basic information about NIP, lets:
-var findCompanyByNip = gus.findByNip("6762264686");
-console.log(findCompanyByNip);
+client.then(function(gus) {
+    console.log("USED API KEY: ", gus.key);
+    console.log("Sandbox: ", gus.sandbox);
+    console.log("login GUS sessionID: ", gus.getSessionId());
+    gus.findByNip("6762264686").then(function(findCompanyByNip) {
+        console.log(findCompanyByNip);
 
+        // If you want to get full report by REGON:
+        var companyRegon = findCompanyByNip.Regon; // get regon from previous query
+        gus.getFullReport(companyRegon, findCompanyByNip.Typ, findCompanyByNip.SilosID).then(function(fullReport) {
+            console.log(companyRegon, fullReport);
+        });
 
-// If you want to get full report by REGON:
-var companyRegon = findCompanyByNip.response.Regon; // get regon from previous query
-var fullReport = gus.getFullReport(companyRegon, findCompanyByNip.response.Typ, findCompanyByNip.response.SilosID);
+    });
 
-console.log(companyRegon, fullReport);
 
 
 // You can also:
@@ -71,9 +64,9 @@ console.log(companyRegon, fullReport);
 //You can use search
 // You need to specify correct search params, one or many of: Krs, Krsy, Nip, Nipy, Regon, Regony14zn, Regony9zn
 // checkout GUS API
-console.log("SEARCH", gus.search({
-	"Nip": "6762264686"
-}));
+//     console.log("SEARCH", gus.search({
+//         "Nip": "6762264686"
+//     }));
 
 //You can logout:
 // gus.logout();
@@ -82,19 +75,23 @@ console.log("SEARCH", gus.search({
 
 
 //You can get info about session if exists (checkout documentation of GUS API):
-console.log("getInfo", gus.getInfo());
+//     console.log("getInfo", gus.getInfo());
 
 //You can get value:
-console.log("getValue StatusSesji", gus.getValue("StatusSesji"));
-console.log("getValue KomunikatKod", gus.getValue("KomunikatKod"));
-console.log("getValue KomunikatTresc", gus.getValue("KomunikatTresc"));
+//     console.log("getValue StatusSesji", gus.getValue("StatusSesji"));
+//     console.log("getValue KomunikatKod", gus.getValue("KomunikatKod"));
+//     console.log("getValue KomunikatTresc", gus.getValue("KomunikatTresc"));
 
 
 //You can get captcha if exist, and for example show it to Your client to fill
 // it is base64 image, checkout GUS API documentation
-console.log("getCaptcha", gus.getCaptcha());
+//     console.log("getCaptcha", gus.getCaptcha());
+//
+// // You can send captcha result, and if it will be correct, get captcha wont show for this session
+//     console.log("checkCaptcha", gus.checkCaptcha("123452"));
+//     console.log("getCaptcha", gus.getCaptcha());
+});
 
-// You can send captcha result, and if it will be correct, get captcha wont show for this session
-console.log("checkCaptcha", gus.checkCaptcha("123452"));
-console.log("getCaptcha", gus.getCaptcha());
+
+
 

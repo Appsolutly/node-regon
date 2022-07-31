@@ -27,7 +27,6 @@ Then create a client:
 ```javascript
 let gus = Client.createClient({
     key: "HERE_PUT_YOUR_PRODUCTION_KEY",
-    disableAsync:true, // if it is true, you will get returned result, and it will waid for end of call
     captcha: {
       autofill: false,
       apiKey: "ANTIGATE_API"
