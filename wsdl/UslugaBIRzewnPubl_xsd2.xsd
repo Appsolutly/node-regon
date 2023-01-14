@@ -46,6 +46,21 @@
             </xs:sequence>
         </xs:complexType>
     </xs:element>
+    <xs:element name="DaneSzukajPodmioty">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="pParametryWyszukiwania" nillable="true" type="q1:ParametryWyszukiwania"
+                            xmlns:q1="http://CIS/BIR/PUBL/2014/07/DataContract"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="DaneSzukajPodmiotyResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="DaneSzukajPodmiotyResult" nillable="true" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
     <xs:element name="DanePobierzPelnyRaport">
         <xs:complexType>
             <xs:sequence>

@@ -20,6 +20,8 @@ console.log("_________________________________");
 
 client = Client.createClient({
     // key: "HERE_PUT_YOUR_PRODUCTION_KEY",
+    sandbox: true,
+    birVersion: '1.1'
 });
 // AVAILABLE ADDITIONAL OPTIONS:
 // sandbox: false,  - but it don't work for some time, by default is true

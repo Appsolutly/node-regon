@@ -27,6 +27,7 @@ Then create a client:
 ```javascript
 let gus = Client.createClient({
     key: "HERE_PUT_YOUR_PRODUCTION_KEY",
+    birVersion: '1.1', // by default 1
     captcha: {
       autofill: false,
       apiKey: "ANTIGATE_API"

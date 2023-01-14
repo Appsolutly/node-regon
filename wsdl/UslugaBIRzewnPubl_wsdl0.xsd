@@ -60,6 +60,12 @@
     <wsdl:message name="IUslugaBIRzewnPubl_DaneSzukaj_OutputMessage">
         <wsdl:part name="parameters" element="tns:DaneSzukajResponse"/>
     </wsdl:message>
+    <wsdl:message name="IUslugaBIRzewnPubl_DaneSzukajPodmioty_InputMessage">
+        <wsdl:part name="parameters" element="tns:DaneSzukajPodmioty"/>
+    </wsdl:message>
+    <wsdl:message name="IUslugaBIRzewnPubl_DaneSzukajPodmioty_OutputMessage">
+        <wsdl:part name="parameters" element="tns:DaneSzukajPodmiotyResponse"/>
+    </wsdl:message>
     <wsdl:message name="IUslugaBIRzewnPubl_DanePobierzPelnyRaport_InputMessage">
         <wsdl:part name="parameters" element="tns:DanePobierzPelnyRaport"/>
     </wsdl:message>
@@ -117,6 +123,12 @@
                         message="tns:IUslugaBIRzewnPubl_DaneSzukaj_InputMessage"/>
             <wsdl:output wsaw:Action="http://CIS/BIR/PUBL/2014/07/IUslugaBIRzewnPubl/DaneSzukajResponse"
                          message="tns:IUslugaBIRzewnPubl_DaneSzukaj_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="DaneSzukajPodmioty">
+            <wsdl:input wsaw:Action="http://CIS/BIR/PUBL/2014/07/IUslugaBIRzewnPubl/DaneSzukajPodmioty"
+                        message="tns:IUslugaBIRzewnPubl_DaneSzukajPodmioty_InputMessage"/>
+            <wsdl:output wsaw:Action="http://CIS/BIR/PUBL/2014/07/IUslugaBIRzewnPubl/DaneSzukajPodmiotyResponse"
+                         message="tns:IUslugaBIRzewnPubl_DaneSzukajPodmioty_OutputMessage"/>
         </wsdl:operation>
         <wsdl:operation name="DanePobierzPelnyRaport">
             <wsdl:input wsaw:Action="http://CIS/BIR/PUBL/2014/07/IUslugaBIRzewnPubl/DanePobierzPelnyRaport"

@@ -1,6 +1,6 @@
 {
 	"name": "node-regon",
-	"version": "1.0.0",
+	"version": "1.1.0",
 	"description": "A library for accessing data about businesses from the National Statistics Office in Poland. It can be used to access data stored in the National Court register using unique identifiers that each company has such as NIP (Tax Identification) and REGON (Statistical) numbers.",	"main": "index.js",
 	"scripts": {
 		"test": "mocha --timeout 10000 test/*-test.js"
